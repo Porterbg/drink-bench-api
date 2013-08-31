@@ -1,0 +1,9 @@
+E:\Telerik\drink-bench-api\trunk\DrinkBench\DrinkBench.Repositories\obj\Debug\DrinkBench.Repositories.csprojResolveAssemblyReference.cache
+E:\Telerik\drink-bench-api\trunk\DrinkBench\DrinkBench.Repositories\bin\Debug\DrinkBench.Repositories.dll
+E:\Telerik\drink-bench-api\trunk\DrinkBench\DrinkBench.Repositories\bin\Debug\DrinkBench.Repositories.pdb
+E:\Telerik\drink-bench-api\trunk\DrinkBench\DrinkBench.Repositories\bin\Debug\DrinkBench.Models.dll
+E:\Telerik\drink-bench-api\trunk\DrinkBench\DrinkBench.Repositories\bin\Debug\EntityFramework.dll
+E:\Telerik\drink-bench-api\trunk\DrinkBench\DrinkBench.Repositories\bin\Debug\DrinkBench.Models.pdb
+E:\Telerik\drink-bench-api\trunk\DrinkBench\DrinkBench.Repositories\bin\Debug\EntityFramework.xml
+E:\Telerik\drink-bench-api\trunk\DrinkBench\DrinkBench.Repositories\obj\Debug\DrinkBench.Repositories.dll
+E:\Telerik\drink-bench-api\trunk\DrinkBench\DrinkBench.Repositories\obj\Debug\DrinkBench.Repositories.pdb

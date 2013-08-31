@@ -1,0 +1,10 @@
+E:\Telerik\drink-bench-api\trunk\DrinkBench\DataLayer\bin\Debug\DataLayer.dll.config
+E:\Telerik\drink-bench-api\trunk\DrinkBench\DataLayer\bin\Debug\DataLayer.dll
+E:\Telerik\drink-bench-api\trunk\DrinkBench\DataLayer\bin\Debug\DataLayer.pdb
+E:\Telerik\drink-bench-api\trunk\DrinkBench\DataLayer\bin\Debug\DrinkBench.Models.dll
+E:\Telerik\drink-bench-api\trunk\DrinkBench\DataLayer\bin\Debug\EntityFramework.dll
+E:\Telerik\drink-bench-api\trunk\DrinkBench\DataLayer\bin\Debug\DrinkBench.Models.pdb
+E:\Telerik\drink-bench-api\trunk\DrinkBench\DataLayer\bin\Debug\EntityFramework.xml
+E:\Telerik\drink-bench-api\trunk\DrinkBench\DataLayer\obj\Debug\DataLayer.csprojResolveAssemblyReference.cache
+E:\Telerik\drink-bench-api\trunk\DrinkBench\DataLayer\obj\Debug\DataLayer.dll
+E:\Telerik\drink-bench-api\trunk\DrinkBench\DataLayer\obj\Debug\DataLayer.pdb
