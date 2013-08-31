@@ -31,8 +31,10 @@ namespace DrinkBench.Services.Controllers
         {
         }
 
+        
         [ActionName("register")]
-        public HttpResponseMessage PostRegisterUser(UserModel model)
+        [HttpPost]
+        public HttpResponseMessage PostRegister(UserModel model)
         {
             var responseMsg = this.PerformOperationAndHandleExceptions(
                 () =>
@@ -85,8 +87,10 @@ namespace DrinkBench.Services.Controllers
             return responseMsg;
         }
 
+        
         [ActionName("login")]
-        public HttpResponseMessage PostLoginUser(UserModel model)
+        [HttpPost]
+        public HttpResponseMessage PostLogin(UserModel model)
         {
             var responseMsg = this.PerformOperationAndHandleExceptions(
                 () =>
@@ -128,8 +132,10 @@ namespace DrinkBench.Services.Controllers
             return responseMsg;
         }
 
+        
         [ActionName("logout")]
-        public HttpResponseMessage PutLogoutUser(string sessionKey)
+        [HttpPut]
+        public HttpResponseMessage PutLogout(string sessionKey)
         {
             var responseMsg = this.PerformOperationAndHandleExceptions(
               () =>

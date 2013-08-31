@@ -50,7 +50,8 @@ namespace DrinkBench.Services.Controllers
             return model;
         }
 
-        public HttpResponseMessage PostPosts(string sessionKey, BenchModel bench)
+        [HttpPost]
+        public HttpResponseMessage PostBenches(string sessionKey, BenchModel bench)
         {
             var responseMsg = this.PerformOperationAndHandleExceptions(() =>
             {
