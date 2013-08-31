@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="Bench.cs" />
     <Compile Include="Message.cs" />
+    <Compile Include="MessageType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="User.cs" />
   </ItemGroup>

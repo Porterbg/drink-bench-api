@@ -14,5 +14,6 @@ namespace DrinkBench.Models
         public virtual User SenderId { get; set; }
         public string Text { get; set; }
         public DateTime SendDate { get; set; }
+        public MessageType Type { get; set; }
     }
 }
