@@ -10,8 +10,8 @@ namespace DrinkBench.Models
     {
         [Key]
         public int Id { get; set; }
-        public virtual User UserId { get; set; }
-        public virtual User SenderId { get; set; }
+        public virtual User User { get; set; }
+        public virtual User Sender { get; set; }
         public string Text { get; set; }
         public DateTime SendDate { get; set; }
         public MessageType Type { get; set; }

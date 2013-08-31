@@ -16,9 +16,9 @@ namespace DrinkBench.Services.Controllers
     {
         private const int MinUsernameLength = 3;
         private const int MaxUsernameLength = 40;
+        //private const string ValidUsernameCharacters =
+        //    "qwertyuioplkjhgfdsazxcvbnmQWERTYUIOPLKJHGFDSAZXCVBNM1234567890_.";
         private const string ValidUsernameCharacters =
-            "qwertyuioplkjhgfdsazxcvbnmQWERTYUIOPLKJHGFDSAZXCVBNM1234567890_.";
-        private const string ValidDisplaynameCharacters =
             "qwertyuioplkjhgfdsazxcvbnmQWERTYUIOPLKJHGFDSAZXCVBNM1234567890_. -";
 
         private const string SessionKeyChars =
@@ -110,7 +110,9 @@ namespace DrinkBench.Services.Controllers
 
                         if (user != null)
                         {
-                            throw new InvalidOperationException("Users exists");
+                            throw new InvalidOperationException(
+                                "Users info incorrect Firstname:"+model.Firstname+
+                                "AuthCode:"+model.AuthCode);
                         }
                         if (user.SessionKey == null)
                         {
