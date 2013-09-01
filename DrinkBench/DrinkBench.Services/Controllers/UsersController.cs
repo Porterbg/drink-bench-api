@@ -113,7 +113,9 @@ namespace DrinkBench.Services.Controllers
                             AuthCode = model.AuthCode,
                             Firstname = model.Firstname,
                             Lastname = model.Lastname,
-                            Nickname = model.Nickname
+                            Nickname = model.Nickname,
+                            StartTime = DateTime.Now,
+                            EndTime = DateTime.Now
                         };
 
                         context.Users.Add(user);
