@@ -19,10 +19,28 @@ namespace DrinkBench.Services
             );
 
             config.Routes.MapHttpRoute(
-                name: "DefaultApi",
-                routeTemplate: "api/{controller}/{id}",
-                defaults: new { id = RouteParameter.Optional }
+                name: "MessagesApi",
+                routeTemplate: "api/messages/{id}",
+                defaults: new 
+                {
+                    controller = "messages",
+                    id = RouteParameter.Optional 
+                }
             );
+            config.Routes.MapHttpRoute(
+                name: "BenchesApi",
+                routeTemplate: "api/benches/{id}",
+                defaults: new 
+                {
+                    controller = "benches",
+                    id = RouteParameter.Optional 
+                }
+            );
+            //config.Routes.MapHttpRoute(
+            //    name: "DefaultApi",
+            //    routeTemplate: "api/{controller}/{id}",
+            //    defaults: new { id = RouteParameter.Optional }
+            //);
 
             // Uncomment the following line of code to enable query support for actions with an IQueryable or IQueryable<T> return type.
             // To avoid processing unexpected or malicious queries, use the validation settings on QueryableAttribute to validate incoming queries.
