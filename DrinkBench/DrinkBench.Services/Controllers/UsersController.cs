@@ -84,7 +84,7 @@ namespace DrinkBench.Services.Controllers
         
         [ActionName("register")]
         [HttpPost]
-        public HttpResponseMessage PostRegister(UserModel model)
+        public HttpResponseMessage PostRegister(RegisterModel model)
         {
             var responseMsg = this.PerformOperationAndHandleExceptions(
                 () =>
@@ -92,14 +92,15 @@ namespace DrinkBench.Services.Controllers
                     var context = new DrinkBenchContext();
                     using (context)
                     {
-                        this.ValidateName(model.Firstname);
-                        this.ValidateName(model.Lastname);
+                        //this.ValidateName(model.Firstname);
+                        //this.ValidateName(model.Lastname);
                         this.ValidateAuthCode(model.AuthCode);
                         var firstnameToLower = model.Firstname.ToLower();
                         var lastnameToLower = model.Lastname.ToLower();
                         var user = context.Users.FirstOrDefault(
                             usr => usr.Firstname.ToLower() == firstnameToLower
-                            || usr.Lastname.ToLower() == lastnameToLower);
+                            && usr.Lastname.ToLower() == lastnameToLower
+                            && usr.Nickname == model.Nickname);
 
                         if (user != null)
                         {
@@ -148,8 +149,8 @@ namespace DrinkBench.Services.Controllers
                     var context = new DrinkBenchContext();
                     using (context)
                     {
-                        this.ValidateName(model.Firstname);
-                        this.ValidateName(model.Lastname);
+                        //this.ValidateName(model.Firstname);
+                        //this.ValidateName(model.Lastname);
                         this.ValidateAuthCode(model.AuthCode);
                         var firstnameToLower = model.Firstname.ToLower();
                         var user = context.Users.FirstOrDefault(
