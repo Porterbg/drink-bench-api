@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using DrinkBench.Models;
 
 namespace DrinkBench.Services.Controllers
 {
@@ -17,6 +18,6 @@ namespace DrinkBench.Services.Controllers
 
         public string Text { get; set; }
 
-        public Models.MessageType Type { get; set; }
+        public MessageType Type { get; set; }
     }
 }
