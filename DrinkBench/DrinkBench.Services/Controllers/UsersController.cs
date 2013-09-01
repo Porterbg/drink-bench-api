@@ -161,9 +161,19 @@ namespace DrinkBench.Services.Controllers
 
                         if (user == null)
                         {
-                            throw new InvalidOperationException(
-                                "Users info incorrect Firstname:"+model.Firstname+
-                                "AuthCode:"+model.AuthCode);
+                            var userWithoutOAuth = context.Users.FirstOrDefault(
+                            usr => usr.Firstname.ToLower() == firstnameToLower
+                            && usr.Nickname == model.Nickname);
+                            if (userWithoutOAuth != null)
+                            {
+                                throw new InvalidOperationException(
+                                "Users info incorrect Firstname:" + model.Firstname +
+                                "AuthCode:" + model.AuthCode);
+                            }
+                            else
+                            {
+                                return PostRegister(model);
+                            }
                         }
                         if (user.SessionKey == null)
                         {
