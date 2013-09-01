@@ -159,7 +159,7 @@ namespace DrinkBench.Services.Controllers
                             usr => usr.Firstname.ToLower() == firstnameToLower
                             && usr.AuthCode == model.AuthCode);
 
-                        if (user != null)
+                        if (user == null)
                         {
                             throw new InvalidOperationException(
                                 "Users info incorrect Firstname:"+model.Firstname+

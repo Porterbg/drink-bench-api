@@ -72,7 +72,7 @@ namespace DrinkBench.Services.Controllers
                         var user = context.Users.FirstOrDefault(
                             usr => usr.SessionKey == sessionKey);
 
-                        if (user != null)
+                        if (user == null)
                         {
                             throw new InvalidOperationException("Message user id incorret"+model.userId);
                         }
