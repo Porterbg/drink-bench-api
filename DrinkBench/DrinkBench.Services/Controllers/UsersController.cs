@@ -33,6 +33,54 @@ namespace DrinkBench.Services.Controllers
         {
         }
 
+        [ActionName("all")]
+        [HttpGet]
+        public List<UserModel> GetAll(string sessionKey)
+        {
+            var responseMsg = this.PerformOperationAndHandleExceptions(() =>
+            {
+                var context = new DrinkBenchContext();
+
+                var user = context.Users.FirstOrDefault(usr => usr.SessionKey == sessionKey);
+                if (user == null)
+                {
+                    throw new InvalidOperationException("Invalid sessionkey");
+                }
+
+                var usersEntities = context.Users;
+                var models =
+                    (from userEntity in usersEntities
+                     select new UserModel()
+                     {
+                         Id = userEntity.Id,
+                         Firstname = userEntity.Firstname,
+                         Lastname = userEntity.Lastname,
+                         Nickname = userEntity.Nickname,
+                         Avatar = userEntity.Avatar,
+                         Bench = new BenchModel()
+                         {
+                             StartTime = userEntity.StartTime,
+                             EndTime = userEntity.EndTime,
+                             Id = userEntity.Bench.Id,
+                             Name = userEntity.Bench.Name,
+                             Latitude = userEntity.Bench.Latitude,
+                             Longitude = userEntity.Bench.Longitude,
+                             UsersCount = (userEntity.Bench.Users != null) ? userEntity.Bench.Users.Count : 0,
+                         }
+                     });
+                return models.ToList();
+            });
+
+            return responseMsg;
+        }
+
+        [ActionName("user")]
+        [HttpGet]
+        public UserModel GetById(int id, string sessionKey)
+        {
+            var model = this.GetAll(sessionKey).FirstOrDefault(u => u.Id == id);
+            return model;
+        }
         
         [ActionName("register")]
         [HttpPost]

@@ -17,7 +17,7 @@ namespace DrinkBench.Services.Controllers
 
         public string Nickname { get; set; }
 
-        public IEnumerable<UserModel> Friends { get; set; }
+        public List<UserModel> Friends { get; set; }
 
         public DateTime StartTime { get; set; }
 
@@ -26,5 +26,7 @@ namespace DrinkBench.Services.Controllers
         public string AuthCode { get; set; }
 
         public string Avatar { get; set; }
+
+        public BenchModel Bench { get; set; }
     }
 }
