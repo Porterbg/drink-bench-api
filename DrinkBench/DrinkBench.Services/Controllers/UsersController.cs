@@ -143,7 +143,7 @@ namespace DrinkBench.Services.Controllers
         
         [ActionName("login")]
         [HttpPost]
-        public HttpResponseMessage PostLogin(UserModel model)
+        public HttpResponseMessage PostLogin(RegisterModel model)
         {
             var responseMsg = this.PerformOperationAndHandleExceptions(
                 () =>
