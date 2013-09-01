@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using DrinkBench.Services.Models;
 
 namespace DrinkBench.Services.Controllers
 {
@@ -17,7 +18,7 @@ namespace DrinkBench.Services.Controllers
 
         public string Nickname { get; set; }
 
-        public List<UserModel> Friends { get; set; }
+        public List<UsersModel> Friends { get; set; }
 
         public DateTime StartTime { get; set; }
 

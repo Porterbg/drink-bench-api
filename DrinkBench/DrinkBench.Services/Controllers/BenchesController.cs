@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Web.Mvc;
 using DataLayer;
 using DrinkBench.Models;
+using DrinkBench.Services.Models;
 
 namespace DrinkBench.Services.Controllers
 {
@@ -44,10 +45,48 @@ namespace DrinkBench.Services.Controllers
         }
 
         [HttpGet]
-        public BenchModel GetById(int id, string sessionKey)
+        public BenchFullModel GetById(int id, string sessionKey)
         {
-            var model = this.GetAll(sessionKey).FirstOrDefault(bench => bench.Id == id);
-            return model;
+            var responseMsg = this.PerformOperationAndHandleExceptions(() =>
+            {
+                var context = new DrinkBenchContext();
+
+                var user = context.Users.FirstOrDefault(usr => usr.SessionKey == sessionKey);
+                if (user == null)
+                {
+                    throw new InvalidOperationException("Invalid sessionkey");
+                }
+
+                var benchEntities = context.Benches;
+                var bench = benchEntities.FirstOrDefault(b => b.Id == id);
+
+                if (bench == null)
+                {
+                    throw new InvalidOperationException("Invalid bench id"+id);
+                }
+
+                BenchFullModel model = new BenchFullModel()
+                        {
+                            Id = bench.Id,
+                            Name = bench.Name,
+                            Latitude = bench.Latitude,
+                            Longitude = bench.Longitude,
+                            StartTime = bench.StartTime,
+                            EndTime = bench.EndTime,
+                            Users = (from benchUser in bench.Users
+                                     select new UsersModel()
+                                     {
+                                         Id = benchUser.Id,
+                                         Nickname = benchUser.Nickname,
+                                         Avatar = benchUser.Avatar,
+                                         StartTime = benchUser.StartTime,
+                                         EndTime = benchUser.EndTime
+                                     }).ToList()
+                        };
+                return model;
+            });
+
+            return responseMsg;
         }
 
         [HttpPost]
