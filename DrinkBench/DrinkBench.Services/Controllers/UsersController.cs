@@ -27,7 +27,7 @@ namespace DrinkBench.Services.Controllers
 
         private const int SessionKeyLength = 50;
 
-        private const int Sha1Length = 40;
+        private const int Sha256Length = 64;
 
         public UsersController()
         {
@@ -237,7 +237,7 @@ namespace DrinkBench.Services.Controllers
 
         private void ValidateAuthCode(string authCode)
         {
-            if (authCode == null || authCode.Length != Sha1Length)
+            if (authCode == null || authCode.Length != Sha256Length)
             {
                 throw new ArgumentOutOfRangeException("Password should be encrypted");
             }
