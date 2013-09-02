@@ -8,6 +8,7 @@ using System.Data.Entity;
 using DataLayer;
 using DrinkBench.Models;
 using System.Text;
+using DrinkBench.Services.Models;
 
 
 namespace DrinkBench.Services.Controllers
@@ -35,7 +36,7 @@ namespace DrinkBench.Services.Controllers
 
         [ActionName("all")]
         [HttpGet]
-        public List<UserModel> GetAll(string sessionKey)
+        public List<FriendsModel> GetAll(string sessionKey)
         {
             var responseMsg = this.PerformOperationAndHandleExceptions(() =>
             {
@@ -50,23 +51,14 @@ namespace DrinkBench.Services.Controllers
                 var usersEntities = context.Users;
                 var models =
                     (from userEntity in usersEntities
-                     select new UserModel()
+                     select new FriendsModel()
                      {
                          Id = userEntity.Id,
-                         Firstname = userEntity.Firstname,
-                         Lastname = userEntity.Lastname,
+                         StartTime = userEntity.StartTime,
+                         EndTime = userEntity.EndTime,
                          Nickname = userEntity.Nickname,
-                         Avatar = userEntity.Avatar,
-                         Bench = new BenchModel()
-                         {
-                             StartTime = userEntity.StartTime,
-                             EndTime = userEntity.EndTime,
-                             Id = userEntity.Bench.Id,
-                             Name = userEntity.Bench.Name,
-                             Latitude = userEntity.Bench.Latitude,
-                             Longitude = userEntity.Bench.Longitude,
-                             UsersCount = (userEntity.Bench.Users != null) ? userEntity.Bench.Users.Count : 0,
-                         }
+                         Avatar = userEntity.Avatar
+                         
                      });
                 return models.ToList();
             });
@@ -78,8 +70,53 @@ namespace DrinkBench.Services.Controllers
         [HttpGet]
         public UserModel GetById(int id, string sessionKey)
         {
-            var model = this.GetAll(sessionKey).FirstOrDefault(u => u.Id == id);
-            return model;
+            var responseMsg = this.PerformOperationAndHandleExceptions(() =>
+            {
+                var context = new DrinkBenchContext();
+                using (context)
+                {
+                    var user = context.Users.FirstOrDefault(usr => usr.Id == id);
+                    var sessionUser = context.Users.FirstOrDefault(usr => usr.SessionKey == sessionKey);
+                    if (sessionUser == null)
+                    {
+                        throw new InvalidOperationException("Invalid sessionkey");
+                    }
+
+                    var model = new UserModel()
+                    {
+                        Id = user.Id,
+                        Firstname = user.Firstname,
+                        Lastname = user.Lastname,
+                        Nickname = user.Nickname,
+                        StartTime = user.StartTime,
+                        EndTime = user.EndTime,
+                        Avatar = user.Avatar,
+                        Bench = user.Bench==null?null:new BenchModel()
+                        {
+                            StartTime = user.Bench.StartTime,
+                            EndTime = user.Bench.EndTime,
+                            Id = user.Bench.Id,
+                            Name = user.Bench.Name,
+                            Latitude = user.Bench.Latitude,
+                            Longitude = user.Bench.Longitude,
+                            UsersCount = (user.Bench.Users != null) ? user.Bench.Users.Count : 0
+                        },
+                        Friends = user.Friends==null?null:
+                            (from friend in user.Friends
+                             select new FriendsModel() 
+                             {
+                                 Id = friend.Id,
+                                 StartTime = friend.StartTime,
+                                 EndTime = friend.EndTime,
+                                 Nickname = friend.Nickname,
+                                 Avatar = friend.Avatar
+                             }).ToList()
+                    };
+                    //this.GetAll(sessionKey).FirstOrDefault(u => u.Id == id);
+                    return model;
+                }
+            });
+            return responseMsg;
         }
         
         [ActionName("register")]
@@ -197,6 +234,7 @@ namespace DrinkBench.Services.Controllers
             return responseMsg;
         }
 
+        
         
         [ActionName("logout")]
         [HttpPut]

@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bench.cs" />
+    <Compile Include="Friend.cs" />
     <Compile Include="Message.cs" />
     <Compile Include="MessageType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

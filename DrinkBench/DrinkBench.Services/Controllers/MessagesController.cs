@@ -15,7 +15,7 @@ namespace DrinkBench.Services.Controllers
     {
         private const int SessionKeyLength = 50;
 
-        private const int Sha1Length = 40;
+        private const int Sha256Length = 40;
 
         public MessagesController()
         {

@@ -74,7 +74,7 @@ namespace DrinkBench.Services.Controllers
                             StartTime = bench.StartTime,
                             EndTime = bench.EndTime,
                             Users = (from benchUser in bench.Users
-                                     select new UsersModel()
+                                     select new FriendsModel()
                                      {
                                          Id = benchUser.Id,
                                          Nickname = benchUser.Nickname,

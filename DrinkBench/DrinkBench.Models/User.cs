@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 
@@ -21,12 +22,14 @@ namespace DrinkBench.Models
         public DateTime StartTime { get; set; }
         public DateTime EndTime { get; set; }
 
-        public virtual ICollection<User> Friends { get; set; }
+        [ForeignKey("Id")]
+        public virtual ICollection<Friend> Friends { get; set; }
         public virtual ICollection<Message> Messages { get; set; }
         public User()
         {
-            this.Friends = new HashSet<User>();
+            this.Friends = new HashSet<Friend>();
             this.Messages = new HashSet<Message>();
         }
     }
 }
+    

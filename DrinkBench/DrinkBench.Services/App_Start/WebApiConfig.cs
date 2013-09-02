@@ -36,6 +36,16 @@ namespace DrinkBench.Services
                     id = RouteParameter.Optional 
                 }
             );
+
+            config.Routes.MapHttpRoute(
+                name: "FriendsApi",
+                routeTemplate: "api/friends/{id}",
+                defaults: new
+                {
+                    controller = "friends",
+                    id = RouteParameter.Optional
+                }
+            );
             //config.Routes.MapHttpRoute(
             //    name: "DefaultApi",
             //    routeTemplate: "api/{controller}/{id}",
