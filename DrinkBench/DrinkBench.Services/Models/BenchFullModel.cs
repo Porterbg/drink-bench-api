@@ -14,7 +14,7 @@ namespace DrinkBench.Services.Controllers
         public int Id { get; set; }
         [DataMember(Name = "name")]
         public string Name { get; set; }
-        [DataMember(Name = "name")]
+        [DataMember(Name = "users")]
         public List<FriendsModel> Users { get; set; }
         [DataMember(Name = "latitude")]
         public decimal Latitude { get; set; }

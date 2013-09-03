@@ -70,8 +70,8 @@ namespace DrinkBench.Services.Controllers
                     throw new InvalidOperationException("Invalid sessionkey");
                 }
 
-                var benchEntities = context.Benches;
-                var bench = benchEntities.FirstOrDefault(b => b.Id == id);
+                var benchesEntities = context.Benches;
+                var bench = benchesEntities.FirstOrDefault(b => b.Id == id);
 
                 if (bench == null)
                 {
