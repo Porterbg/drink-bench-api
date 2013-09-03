@@ -35,6 +35,17 @@ namespace DrinkBench.Services.Controllers
                             Name = benchEntity.Name,
                             Latitude = benchEntity.Latitude,
                             Longitude = benchEntity.Longitude,
+                            Users = (from benchUser in benchEntity.Users
+                                         select new UserModel()
+                                         {
+                                             Id = benchUser.Id,
+                                             Firstname = benchUser.Firstname,
+                                             Lastname = benchUser.Lastname,
+                                             Nickname = benchUser.Nickname,
+                                             StartTime = benchUser.StartTime,
+                                             EndTime = benchUser.EndTime,
+                                             Avatar = benchUser.Avatar
+                                         }),
                             UsersCount = benchEntity.Users.Count,
                             StartTime = benchEntity.StartTime,
                             EndTime = benchEntity.EndTime

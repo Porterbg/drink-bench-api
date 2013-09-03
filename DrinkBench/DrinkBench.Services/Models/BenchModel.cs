@@ -23,5 +23,7 @@ namespace DrinkBench.Services.Controllers
         public DateTime StartTime { get; set; }
         [DataMember(Name = "endTime")]
         public DateTime EndTime { get; set; }
+
+        public IEnumerable<UserModel> Users { get; set; }
     }
 }
