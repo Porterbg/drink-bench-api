@@ -21,6 +21,7 @@ namespace DrinkBench.Services.Controllers
         {
         }
 
+        [ActionName("all")]
         [HttpGet]
         public IQueryable<MessageModel> GetAll(string sessionKey)
         {
@@ -53,6 +54,7 @@ namespace DrinkBench.Services.Controllers
             return responseMsg;
         }
 
+        [ActionName("message")]
         [HttpGet]
         public MessageModel GetById(int id, string sessionKey)
         {
@@ -60,6 +62,7 @@ namespace DrinkBench.Services.Controllers
             return model;
         }
 
+        [ActionName("newmessage")]
         [HttpPost]
         public HttpResponseMessage PostMessage(MessageModel model, string sessionKey)
         {

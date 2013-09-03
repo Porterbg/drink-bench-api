@@ -12,8 +12,9 @@ namespace DrinkBench.Services.Controllers
 {
     public class BenchesController : BaseApiController
     {
+        [ActionName("all")]
         [HttpGet]
-        public IQueryable<BenchModel> GetAll(string sessionKey)
+        public List<BenchModel> GetAll(string sessionKey)
         {
             var responseMsg = this.PerformOperationAndHandleExceptions(() =>
             {
@@ -25,25 +26,26 @@ namespace DrinkBench.Services.Controllers
                     throw new InvalidOperationException("Invalid sessionkey");
                 }
 
-                var benchEntities = context.Benches;
+                var benchesEntities = context.Benches;
                 var models =
-                    (from benchEntity in benchEntities
+                    (from benchEntity in benchesEntities
                         select new BenchModel()
                         {
                             Id = benchEntity.Id,
                             Name = benchEntity.Name,
                             Latitude = benchEntity.Latitude,
                             Longitude = benchEntity.Longitude,
-                            UsersCount = (benchEntity.Users != null) ? benchEntity.Users.Count : 0,
+                            UsersCount = benchEntity.Users.Count,
                             StartTime = benchEntity.StartTime,
                             EndTime = benchEntity.EndTime
                         });
-                return models.OrderByDescending(b => b.UsersCount);
+                return models.ToList();
             });
 
             return responseMsg;
         }
 
+        [ActionName("bench")]
         [HttpGet]
         public BenchFullModel GetById(int id, string sessionKey)
         {
@@ -89,6 +91,7 @@ namespace DrinkBench.Services.Controllers
             return responseMsg;
         }
 
+        [ActionName("newbench")]
         [HttpPost]
         public HttpResponseMessage PostBenches(string sessionKey, BenchModel bench)
         {

@@ -20,30 +20,27 @@ namespace DrinkBench.Services
 
             config.Routes.MapHttpRoute(
                 name: "MessagesApi",
-                routeTemplate: "api/messages/{id}",
+                routeTemplate: "api/messages/{action}",
                 defaults: new 
                 {
-                    controller = "messages",
-                    id = RouteParameter.Optional 
+                    controller = "messages"
                 }
             );
             config.Routes.MapHttpRoute(
                 name: "BenchesApi",
-                routeTemplate: "api/benches/{id}",
+                routeTemplate: "api/benches/{action}",
                 defaults: new 
                 {
-                    controller = "benches",
-                    id = RouteParameter.Optional 
+                    controller = "benches" 
                 }
             );
 
             config.Routes.MapHttpRoute(
                 name: "FriendsApi",
-                routeTemplate: "api/friends/{id}",
+                routeTemplate: "api/friends/{action}",
                 defaults: new
                 {
-                    controller = "friends",
-                    id = RouteParameter.Optional
+                    controller = "friends"
                 }
             );
             //config.Routes.MapHttpRoute(
