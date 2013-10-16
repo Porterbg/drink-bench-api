@@ -13,5 +13,7 @@ namespace DrinkBench.Services.Controllers
         public string Firstname { get; set; }
         [DataMember(Name = "sessionKey")]
         public string SessionKey { get; set; }
+        [DataMember(Name = "id")]
+        public int Id { get; set; }
     }
 }

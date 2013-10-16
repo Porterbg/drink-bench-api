@@ -164,7 +164,8 @@ namespace DrinkBench.Services.Controllers
                         var loggedModel = new LoggedUserModel()
                         {
                             Firstname = user.Firstname,
-                            SessionKey = user.SessionKey
+                            SessionKey = user.SessionKey,
+                            Id = user.Id
                         };
 
                         var response =
@@ -221,7 +222,8 @@ namespace DrinkBench.Services.Controllers
                         var loggedModel = new LoggedUserModel()
                         {
                             Firstname = user.Firstname,
-                            SessionKey = user.SessionKey
+                            SessionKey = user.SessionKey,
+                            Id = user.Id
                         };
 
                         var response =
