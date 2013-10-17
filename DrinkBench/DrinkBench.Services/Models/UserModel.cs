@@ -26,7 +26,7 @@ namespace DrinkBench.Services.Controllers
         public DateTime EndTime { get; set; }
         [DataMember(Name = "avatar")]
         public string Avatar { get; set; }
-        [DataMember(Name = "bench")]
-        public BenchModel Bench { get; set; }
+        [DataMember(Name = "benches")]
+        public List<BenchModel> Benches { get; set; }
     }
 }

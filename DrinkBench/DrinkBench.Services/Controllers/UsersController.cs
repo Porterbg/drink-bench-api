@@ -91,16 +91,18 @@ namespace DrinkBench.Services.Controllers
                         StartTime = user.StartTime,
                         EndTime = user.EndTime,
                         Avatar = user.Avatar,
-                        Bench = user.Bench==null?null:new BenchModel()
+                        Benches = user.Benches==null?null:
+                        (   from bench in user.Benches
+                            select new BenchModel()
                         {
-                            StartTime = user.Bench.StartTime,
-                            EndTime = user.Bench.EndTime,
-                            Id = user.Bench.Id,
-                            Name = user.Bench.Name,
-                            Latitude = user.Bench.Latitude,
-                            Longitude = user.Bench.Longitude,
-                            UsersCount = (user.Bench.Users != null) ? user.Bench.Users.Count : 0
-                        },
+                            StartTime = bench.StartTime,
+                            EndTime = bench.EndTime,
+                            Id = bench.Id,
+                            Name = bench.Name,
+                            Latitude = bench.Latitude,
+                            Longitude = bench.Longitude,
+                            UsersCount = (bench.Users != null) ? bench.Users.Count : 0
+                        }).ToList(),
                         Friends = user.Friends==null?null:
                             (from friend in user.Friends
                              select new FriendsModel() 

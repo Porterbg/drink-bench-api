@@ -146,6 +146,43 @@ namespace DrinkBench.Services.Controllers
             return responseMsg;
         }
 
+        [ActionName("joinbench")]
+        [HttpPut]
+        public HttpResponseMessage PutJoinBench(int benchId, string sessionKey)
+        {
+            var responseMsg = this.PerformOperationAndHandleExceptions(() =>
+            {
+                var context = new DrinkBenchContext();
+
+                using (context)
+                {
+                    var user = context.Users.FirstOrDefault(usr => usr.SessionKey == sessionKey);
+                    if (user == null)
+                    {
+                        throw new InvalidOperationException("Invalid sessionkey");
+                    }
+
+                    var benchesEntities = context.Benches;
+                    var bench = benchesEntities.FirstOrDefault(b => b.Id == benchId);
+
+                    if (bench == null)
+                    {
+                        throw new InvalidOperationException("Invalid bench id" + benchId);
+                    }
+
+                    bench.Users.Add(user);
+                    context.SaveChanges();
+
+
+                    var response =
+                            this.Request.CreateResponse(HttpStatusCode.OK);
+                    return response;
+                }
+            });
+
+            return responseMsg;
+        }
+
         //[HttpGet]
         //public BenchFullModel GetById(int id)
         //{
