@@ -1,5 +1,5 @@
 E:\Telerik\drink-bench-api\trunk\DrinkBench\DrinkBench.Models\bin\Debug\DrinkBench.Models.dll
 E:\Telerik\drink-bench-api\trunk\DrinkBench\DrinkBench.Models\bin\Debug\DrinkBench.Models.pdb
+E:\Telerik\drink-bench-api\trunk\DrinkBench\DrinkBench.Models\obj\Debug\DrinkBench.Models.csprojResolveAssemblyReference.cache
 E:\Telerik\drink-bench-api\trunk\DrinkBench\DrinkBench.Models\obj\Debug\DrinkBench.Models.dll
 E:\Telerik\drink-bench-api\trunk\DrinkBench\DrinkBench.Models\obj\Debug\DrinkBench.Models.pdb
-E:\Telerik\drink-bench-api\trunk\DrinkBench\DrinkBench.Models\obj\Debug\DrinkBench.Models.csprojResolveAssemblyReference.cache
